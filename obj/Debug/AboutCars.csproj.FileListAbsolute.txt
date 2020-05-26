@@ -1,0 +1,7 @@
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\obj\Debug\AboutCars.csprojAssemblyReference.cache
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\obj\Debug\AboutCars.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\bin\Debug\AboutCars.exe.config
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\bin\Debug\AboutCars.exe
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\bin\Debug\AboutCars.pdb
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\obj\Debug\AboutCars.exe
+C:\Users\hp\Desktop\Новая папка\AboutCars\AboutCars\obj\Debug\AboutCars.pdb
