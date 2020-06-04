@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace AboutCars
 {
-    [Serializable]
-    public enum enumKind{ Mechanical, Automatic, Mixed, Robotic, Null = -1 }
+    public enum transmitionKind { Automatic = 1, Mechanic =2, Mixed =3, Null = -1 };
     [Serializable]
     public class Car
     {
+        
         private string brand;
         private string model;
         private int year_create;
         private double volume;
         private int run;
-        private string transmition;
-
+        private transmitionKind transmition;
+        
         public string Brand
         {
             get
@@ -90,7 +90,7 @@ namespace AboutCars
             }
         }
 
-        public string Transmition
+        public transmitionKind Transmition
         {
             get
             {
@@ -109,10 +109,10 @@ namespace AboutCars
             Year_create = 0;
             Volume = 0;
             Run = 0;
-            Transmition = "Default";
+            Transmition = transmitionKind.Null;
         }
 
-        public Car(string brand, string model, int year_create, double volume, int run, string transmition)
+        public Car(string brand, string model, int year_create, double volume, int run, transmitionKind transmition)
         {
             this.brand = brand;
             this.model = model;
@@ -121,12 +121,12 @@ namespace AboutCars
             this.run = run;
             this.transmition = transmition;
         }
-
+       
 
         public override string ToString()
         {
             return String.Format("Марка: {0}, Модель: {1}, Год выпуска: {2} г., \n Объем двигателя: {3} литров, Пробег: {4} км, Тип коробки передач: {5} \n",
-                Brand, Model, Year_create.ToString(), Volume.ToString(), Run.ToString(), Transmition);
+                Brand, Model, Year_create.ToString(), Volume.ToString(), Run.ToString(), Help.KindToString(Transmition));
         }
     }  
        

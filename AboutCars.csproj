@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFile.cs" />
-    <Compile Include="Models\Car.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="FileFactory.cs" />
     <Compile Include="Help.cs" />
     <Compile Include="IFileManager.cs" />
@@ -55,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

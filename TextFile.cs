@@ -16,16 +16,16 @@ namespace AboutCars
                 List<Car> list = new List<Car>();
                 while (sr.Peek() > -1)
                 {
-                    string brand = sr.ReadLine(); 
+                    string brand = sr?.ReadLine(); 
                     string model = sr?.ReadLine();
                     int year;
-                    int.TryParse(sr?.ReadLine(), out year);
+                    int.TryParse(sr.ReadLine(), out year);
                     double volume;
-                    double.TryParse(sr?.ReadLine(), out volume);
+                    double.TryParse(sr.ReadLine(), out volume);
                     int run;
-                    int.TryParse(sr?.ReadLine(), out run);
-                    string transmition = sr?.ReadLine();
-                    sr?.ReadLine();
+                    int.TryParse(sr.ReadLine(), out run);
+                    transmitionKind transmition = StringToKindFromFile(sr.ReadLine());
+                    sr.ReadLine();
                     Car tmp = new Car(brand, model, year, volume, run, transmition);
                     list.Add(tmp);
                 }
@@ -62,6 +62,23 @@ namespace AboutCars
             sw.WriteLine(test.Run.ToString());
             sw.WriteLine(test.Transmition);
             sw.WriteLine();
+        }
+
+        public static transmitionKind StringToKindFromFile(string test)
+        {
+            if (test == "Автоматическая")
+            {
+                return transmitionKind.Automatic;
+            }
+            if (test == "Ручная")
+            {
+                return transmitionKind.Mechanic;
+            }
+            if (test == "Вариатор")
+            {
+                return transmitionKind.Mixed;
+            }
+            return transmitionKind.Null;
         }
 
     }

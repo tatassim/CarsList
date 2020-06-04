@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AboutCars
 {
     
-    class Help
+    public class Help
     {
         const string path = @"C:\Users\hp\Desktop\Новая папка\AboutCars\"; //ввести путь с константой
         public static void PrintToConsole(List<Car> list) 
@@ -78,8 +78,9 @@ namespace AboutCars
             Console.WriteLine("Введите пробег");
             int run;
             int.TryParse(Console.ReadLine(), out run);
-            Console.WriteLine("Введите тип коробки передач");
-            string transmition = Console.ReadLine();
+            Console.Write("Введите тип коробки передач");
+            Console.WriteLine("Введите число 1-Автоматическая, 2 - Ручная, 3 - Смешанная ");
+            transmitionKind transmition = StringToKind(Console.ReadLine());
             Console.ReadLine();
 
             Car tmp = new Car(brand, model, year, volume, run, transmition);
@@ -105,8 +106,9 @@ namespace AboutCars
             Console.WriteLine("Введите пробег");
             int run;
             int.TryParse(Console.ReadLine(), out run);
-            Console.WriteLine("Введите тип коробки передач");
-            string transmition = Console.ReadLine();
+            Console.Write("Введите тип коробки передач");
+            Console.WriteLine("Введите число 1-Автоматическая, 2 - Ручная, 3 - Смешанная ");
+            transmitionKind transmition = StringToKind(Console.ReadLine());
             Console.ReadLine();
 
             Car test = new Car(brand, model, year, volume, run, transmition);
@@ -130,9 +132,44 @@ namespace AboutCars
                     
         }
 
-        public static string KindToString(Car.transmitionKind kind)
+        public static string KindToString(transmitionKind kind)
         {
+            if (kind == transmitionKind.Automatic)
+            {
+                return "Автоматическая";
+            }
+            if (kind == transmitionKind.Mechanic)
+            {
+                return "Механическая";
+            }
+            if (kind == transmitionKind.Mixed)
+            {
+                return "Вариатор";
+            }
+            return "Неизвестно";
+        }
 
+        public static transmitionKind StringToKind(string kind)
+        {
+            int test;
+            if (Int32.TryParse(kind, out test))
+            {
+                switch (test)
+                {
+                    case 1:
+                        return transmitionKind.Automatic;
+                    case 2:
+                        return transmitionKind.Mechanic;
+                    case 3:
+                        return transmitionKind.Mixed;
+                    default:
+                        throw new Exception("Данные о таком типе коробке передач не найдены");
+                }
+            }
+            else
+            {
+                throw new Exception("Введено не число!");
+            }
         }
     }
 }

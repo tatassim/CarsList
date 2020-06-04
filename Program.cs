@@ -9,6 +9,7 @@ namespace AboutCars
    
     class Program
     {
+        const string path = @"C:\Users\hp\Desktop\Новая папка\AboutCars\";
         static void Main(string[] args)
         {
             List<Car> list = Help.InputData();
@@ -41,7 +42,7 @@ namespace AboutCars
                     case 3:
                         string name;
                         IFileManager file = Help.ChooseFile(out name);
-                        file.PrintToFile(list, name);
+                        file.PrintToFile(list, path+ name);
                         Console.WriteLine("Запись выполнена");
                         break;
                     case 4:
@@ -82,10 +83,11 @@ namespace AboutCars
             int.TryParse(Console.ReadLine(), out run);
             Console.WriteLine();
 
-            Console.WriteLine("Введите тип коробки передач");
-            string transmition = Console.ReadLine();
+            Console.Write("Введите тип коробки передач");
+            Console.WriteLine("Введите число 1-Автоматическая, 2 - Ручная, 3 - Смешанная ");
+            transmitionKind transmition = Help.StringToKind(Console.ReadLine());
 
-            List<Car> sortedList = list.Where(cn => cn.Transmition == transmition.Trim(' ') && (cn.Year_create > year) && (cn.Run < run))
+            List<Car> sortedList = list.Where(cn => cn.Transmition == transmition && (cn.Year_create > year) && (cn.Run < run))
                                  .OrderBy(item => item.Volume)
                                  .ToList();
             return sortedList;
