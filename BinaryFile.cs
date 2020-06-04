@@ -12,19 +12,11 @@ namespace AboutCars
     {
         public List<Car> LoadFromFile(string fileName)
         {
-            try
+            using (FileStream f = new FileStream(fileName, FileMode.OpenOrCreate))
             {
-                using (FileStream f = new FileStream(fileName, FileMode.OpenOrCreate))
-                {
-                    BinaryFormatter bf = new BinaryFormatter();
-                    return (List<Car>)bf.Deserialize(f);
-                }
-            }
-
-            catch
-            {
-                throw new Exception("Такого файла не существует или файл пустой");//жесткое исключение. Делал для проверки файла на существование, но для этого есть FileExists
-            }
+                BinaryFormatter bf = new BinaryFormatter();
+                return (List<Car>)bf.Deserialize(f);
+            } 
         }
 
         public void PrintToFile(List<Car> list, string fileName)
@@ -35,7 +27,7 @@ namespace AboutCars
                 bf.Serialize(f, list);
                 f.Close();
             }
-            Console.WriteLine("Запись выполнена");//обращения к консоли не должно быть отсюда
+            
         }
     }
 }

@@ -22,7 +22,7 @@ namespace AboutCars
                 case ".xml":
                     file = new XmlFIle();
                     break;
-                default: throw new Exception("Неверно указано имя файла");
+                default: throw new NotSupportedException("Файл данного типа не поддерживается");
             }
             return file;
         }

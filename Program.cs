@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AboutCars
 {
+   
     class Program
     {
         static void Main(string[] args)
@@ -19,7 +20,8 @@ namespace AboutCars
                     "\n1 - Добавить инфо о машине" +
                     "\n2 - Выполнить поиск машин по дате, пробегу и типу коробки передач" +
                     "\n3 - Сохранить все данные в файл" +
-                    "\n4 - Удалить данные о машине" +
+                    "\n4 - Редактировать данные о машине  " +
+                    "\n5 - Удалить данные о машине  " +
                     "\n0 - Завершение работы");
                 int.TryParse(Console.ReadLine(), out responce);
                 switch (responce)
@@ -29,15 +31,31 @@ namespace AboutCars
                         Help.PrintToConsole(list);
                         break;
                     case 2:
-                        List<Car> sortedList = SortTours(list);
+                        Console.WriteLine("Будет выведена информация о машинах, которые были " +
+                            "\nвыпущены после определенной даты, имеют пробег меньше заданного и" +
+                            "\nзаданный тип коробки передач, упорядочив по объему двигателя");
+                        Console.ReadLine();
+                        List<Car> sortedList = SortCars(list);
                         Help.PrintToConsole(sortedList);
                         break;
                     case 3:
                         string name;
                         IFileManager file = Help.ChooseFile(out name);
                         file.PrintToFile(list, name);
+                        Console.WriteLine("Запись выполнена");
                         break;
                     case 4:
+                        Console.ReadLine();
+                        Console.WriteLine("Выберите какой элемент вы хотите редактрировать, начиная с 0");
+                        int edIndex;
+                        int.TryParse(Console.ReadLine(), out edIndex);
+                        list.Insert(edIndex, Help.EditCar(list, edIndex));
+                        Console.WriteLine("Редактирование завершено");
+                        Console.ReadLine();
+                        Help.PrintToConsole(list);
+                        break;
+
+                    case 5:
                         Console.ReadLine();
                         Console.WriteLine("Выберите какой элемент удалить, начиная с 0");
                         int resp;
@@ -52,7 +70,7 @@ namespace AboutCars
             while (responce != 0);
         }
 
-        static List<Car> SortTours(List<Car> list)
+        static List<Car> SortCars(List<Car> list)
         {
             Console.WriteLine("Введите год выпуска");
             int year;

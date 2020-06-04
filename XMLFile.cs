@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,20 +12,12 @@ namespace AboutCars
     class XmlFIle : IFileManager
     {
         public List<Car> LoadFromFile(string fileName)
-        {
-            try
+        {  
+            using (XmlReader reader = XmlReader.Create(fileName))
             {
-                using (XmlReader reader = XmlReader.Create(fileName))
-                {
-                    XmlSerializer s = new XmlSerializer(typeof(List<Car>));
-                    return (List<Car>)s.Deserialize(reader);
-                }
-            }
-
-            catch
-            {
-                throw new Exception("Такого файла не существует или файл пустой"); //жесткое исключение. Делал для проверки файла на существование, но для этого есть FileExists
-            }
+                XmlSerializer s = new XmlSerializer(typeof(List<Car>));
+                return (List<Car>)s.Deserialize(reader);
+            }   
         }
 
         public void PrintToFile(List<Car> list, string fileName)
@@ -35,7 +28,7 @@ namespace AboutCars
                 s.Serialize(writer, list);
                 writer.Close();
             }
-            Console.WriteLine("Запись выполнена");//обращения к консоли не должно быть отсюда
+            
         }
     }
 }
