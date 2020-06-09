@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AboutCars
 {
-    public enum transmitionKind { Automatic = 1, Mechanic =2, Mixed =3, Null = -1 };
+    public enum transmitionKind { Автоматическая = 1, Механическая =2, Смешанная =3, Null = -1 };
     [Serializable]
     public class Car
     {

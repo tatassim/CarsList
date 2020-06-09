@@ -16,8 +16,8 @@ namespace AboutCars
                 List<Car> list = new List<Car>();
                 while (sr.Peek() > -1)
                 {
-                    string brand = sr?.ReadLine(); 
-                    string model = sr?.ReadLine();
+                    string brand = sr.ReadLine(); 
+                    string model = sr.ReadLine();
                     int year;
                     int.TryParse(sr.ReadLine(), out year);
                     double volume;
@@ -68,15 +68,15 @@ namespace AboutCars
         {
             if (test == "Автоматическая")
             {
-                return transmitionKind.Automatic;
+                return transmitionKind.Автоматическая;
             }
             if (test == "Ручная")
             {
-                return transmitionKind.Mechanic;
+                return transmitionKind.Механическая;
             }
-            if (test == "Вариатор")
+            if (test == "Смешанная")
             {
-                return transmitionKind.Mixed;
+                return transmitionKind.Смешанная;
             }
             return transmitionKind.Null;
         }

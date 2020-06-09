@@ -3,33 +3,47 @@ Vesta
 2017
 1,6
 57000
-Mechanic
+Механическая
 
 Ford
 Foxus
 2010
 2
 200000
-Automatic
+Автоматическая
 
 Nissan
 Qashqai 
 2009
 2
 130000
-Null
+Смешанная
 
 Mercedes-Benz
 W124
 1998
 2
 350000
-Mechanic
+Механическая
 
 BMW
 w1
 2011
 0
 239000
-Automatic
+Автоматическая
+
+KIA
+L
+2009
+1,7
+120000
+Смешанная
+
+L
+qw
+2003
+1,5
+12
+Механическая
 

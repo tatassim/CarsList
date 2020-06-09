@@ -53,7 +53,7 @@ namespace AboutCars
             do
             {
                 Console.WriteLine("Введите информацию о машине");
-                Console.WriteLine();
+                //Console.WriteLine();
                 list.Add(SetCar());
                 //добавление в лист отдельно от создания объекта
 
@@ -65,7 +65,8 @@ namespace AboutCars
         }
 
         public static Car SetCar()
-        { 
+        {
+            Console.WriteLine("Введите марку");
             string brand = Console.ReadLine();
             Console.WriteLine("Введите модель");
             string model = Console.ReadLine();
@@ -134,17 +135,17 @@ namespace AboutCars
 
         public static string KindToString(transmitionKind kind)
         {
-            if (kind == transmitionKind.Automatic)
+            if (kind == transmitionKind.Автоматическая)
             {
                 return "Автоматическая";
             }
-            if (kind == transmitionKind.Mechanic)
+            if (kind == transmitionKind.Механическая)
             {
                 return "Механическая";
             }
-            if (kind == transmitionKind.Mixed)
+            if (kind == transmitionKind.Смешанная)
             {
-                return "Вариатор";
+                return "Смешанная";
             }
             return "Неизвестно";
         }
@@ -157,11 +158,11 @@ namespace AboutCars
                 switch (test)
                 {
                     case 1:
-                        return transmitionKind.Automatic;
+                        return transmitionKind.Автоматическая;
                     case 2:
-                        return transmitionKind.Mechanic;
+                        return transmitionKind.Механическая;
                     case 3:
-                        return transmitionKind.Mixed;
+                        return transmitionKind.Смешанная;
                     default:
                         throw new Exception("Данные о таком типе коробке передач не найдены");
                 }
